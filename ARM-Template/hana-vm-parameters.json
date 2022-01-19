@@ -18,7 +18,7 @@
       "value": "SLES 15 SP2"
     },
     "adminPasswordOrKey": {
-      "value": "ssh-rsa xxx publickey xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbMwtO+JrDAidd3rS04mcNGVZceXGovFDRdx5M8IJrXh41pCf3BbqaZZb7fPZChVS9Z8Nz9x6fVaoOejiB9rbf3baOzCby9A5rV5Tchdp1T0v/1UnX+4h+SBap+Hby7V DCkYzFiaWAgzGJWAqYMB87yaKpSncZOTqi45kGIqdIHYWXhKtlGPGdsDkEvZ/3ME6KxqNsLTV3ULbGr4BSkjR3Eq1UDqHLiKfb/atjkAuUgK4lGVXJSj01NYogP+yPA/whtW/PQGgxilnWP7CpYWjQpv7HGzNj3Wcm1BXm Oz43pVVJ0iisJnEC/qWgKH01WiaR0qGpaup4wUAHgdeZKNMF rsa-key-20220117"
     },
     "Owner": {
       "value": "SAP Team Contact"
