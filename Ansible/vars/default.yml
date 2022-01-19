@@ -15,9 +15,9 @@ sap_hostname:
 # url_hcmt: https://softwaredownloads.sap.com/file/0020000000392012021
 #
 # using own accessible storage account:
-url_sapcar: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/SAPCAR_1010-70006178.EXE
-url_hdbserver: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/IMDB_SERVER20_055_0-80002031.SAR
-url_hcmt: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/HCMT_055_0-80003261.SAR
+url_sapcar: https://stsapbitswesteurope.blob.core.windows.net/sapbits/SAPCAR_1010-70006178.EXE?sp=racwdyti&st=2022-01-18T11:14:05Z&se=2023-01-18T19:14:05Z&sv=2020-08-04&sr=b&sig=YWsUzFJVhBiJVNntOKYDthR%2FxvSad16tUIL5kvEpsP0%3D
+url_hdbserver: https://stsapbitswesteurope.blob.core.windows.net/sapbits/IMDB_SERVER20_059_0-80002031.SAR?sp=racwdyti&st=2022-01-18T11:13:25Z&se=2023-01-18T19:13:25Z&sv=2020-08-04&sr=b&sig=sYPAUmfmzkUvDCLaFmIVjrpQiolaWUWv8Wp2v2jgK9U%3D
+url_hcmt: https://stsapbitswesteurope.blob.core.windows.net/sapbits/HCMT_059_0-80003261.SAR?sp=racwdyti&st=2022-01-18T11:11:22Z&se=2023-01-18T19:11:22Z&sv=2020-08-04&sr=b&sig=umApxo3Oohpd86F9U%2Fr9GOINbijXgsC0Ij4bsQNRras%3D
 
 url_xsa_media: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/51054859.ZIP
 
