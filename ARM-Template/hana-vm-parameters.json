@@ -24,7 +24,7 @@
       "value": "28007510"
     },
     "subnetId": {
-      "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/[SubnetRG]/providers/Microsoft.Network/virtualNetworks/[VNET]/subnets/[subnet]"
+      "value": "/subscriptions/5fd3d14e-3648-4720-99ee-f9e14261f9d7/resourceGroups/brice-sap-basic/providers/Microsoft.Network/virtualNetworks/vnet-sap-prod-westeurope-001/subnets/snet-sap-prod-westeurope-001"
     },
     "HostNameInput": {
         "value": "hostname" 
