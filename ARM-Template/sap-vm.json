@@ -111,7 +111,7 @@
       },
       "Script_URL": {
         "type": "string",
-        "defaultValue": "https://raw.githubusercontent.com/mimergel/sap-hana-vm/main/Scripts/diskConfig.sh",
+        "defaultValue": "https://raw.githubusercontent.com/baky2014/btm-sap-on-az/main/Scripts/diskConfig.sh",
         "metadata": {
           "description": "URL of the disk configuration script"
         }
@@ -308,13 +308,13 @@
                 "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
               }
             ]
-          },
-          "diagnosticsProfile": {
-              "bootDiagnostics": {
-                  "enabled": true,
-                  "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
-              }
           }
+          // "diagnosticsProfile": {
+          //     "bootDiagnostics": {
+          //         "enabled": true,
+          //         "storageUri": "[concat('https://', parameters('diagnosticsStorageAccountName'), '.blob.core.windows.net/')]"
+          //     }
+          // }
         }
       },
       {

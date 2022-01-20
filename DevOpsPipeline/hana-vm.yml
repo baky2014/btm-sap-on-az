@@ -364,7 +364,7 @@ stages:
         resourceGroupName: '$(rsv-rg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/sap-hana-vm/$(Build.SourceBranchName)/ARM-Template/backup-container.json'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/backup-container.json'
         overrideParameters: '-vaultName "$(rsv)" -vaultRG "$(rsv-rg)" -vaultSubID "$(subscription)" -protectionContainers ["$(hanabackupcontainer)"] -sourceResourceIds ["$(hanavmid)"]'
         deploymentMode: 'Incremental'
         deploymentName: 'hana-backup-container-${{ parameters.sid }}-$(Build.BuildId)'
