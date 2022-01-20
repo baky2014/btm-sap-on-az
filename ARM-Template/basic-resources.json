@@ -20,13 +20,14 @@
             "type": "string",
             "defaultValue": "sshPublicKey",
             "allowedValues": [
-            "sshPublicKey"
+            "sshPublicKey",
+            "password"
             ],
             "metadata": {
                 "description": "Only SSH login on Linux for this scenario"
             }
         },
-        "adminPublicKey": {
+        "adminPasswordOrKey": {
             "type": "securestring",
             "metadata": {
                 "description": "Enter SSH key for the Linux VM"
@@ -48,7 +49,7 @@
         },
         "SetupDeploymentAgentScriptURL": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/mimergel/sap-hana-vm/beta/Scripts/setup-deployment-agent.sh",
+            "defaultValue": "https://raw.githubusercontent.com/baky2014/btm-sap-on-az/main/Scripts/setup-deployment-agent.sh",
             "metadata": {
                 "description": "Enter your own script location if required"
             }
@@ -527,6 +528,17 @@
             "script": "[parameters('SetupDeploymentAgentScriptURL')]",
             "scriptCall": "[concat('sh setup-deployment-agent.sh ', parameters('adminUsername'))]"
             }
+        },
+        "linuxConfiguration": {
+            "disablePasswordAuthentication": true,
+            "ssh": {
+            "publicKeys": [
+                {
+                "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
+                "keyData": "[parameters('adminPasswordOrKey')]"
+                }
+            ]
+            }
         }
     },
     "resources": [
@@ -757,7 +769,7 @@
         },
         {
             "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
-            "apiVersion": "2020-01-01",
+            "apiVersion": "2018-09-01",
             "name": "[concat(parameters('PrivateDNSZoneName'), '/', parameters('PrivateDNSZoneName'), '-link')]",
             "location": "global",
             "dependsOn": [
@@ -998,17 +1010,8 @@
                 "osProfile": {
                     "computerName": "[parameters('DevOpsDeployerComputerName')]",
                     "adminUsername": "[parameters('adminUsername')]",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": true,
-                        "ssh": {
-                            "publicKeys": [
-                                {
-                                    "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
-                                    "keyData": "[parameters('adminPublicKey')]"
-                                }
-                            ]
-                        }
-                    }
+                    "adminPassword": "[parameters('adminPasswordOrKey')]",
+                    "linuxConfiguration": "[if(equals(parameters('authenticationType'), 'password'), json('null'), variables('linuxConfiguration'))]"
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {

@@ -35,7 +35,7 @@
         },
         "Script_URL": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/mimergel/sap-hana-vm/main/Scripts/setup-deployment-agent.sh"
+            "defaultValue": "https://raw.githubusercontent.com/baky2014/btm-sap-on-az/main/Scripts/setup-deployment-agent.sh"
         },
         "Owner": {
             "type": "string",
@@ -65,7 +65,7 @@
             "apiVersion": "2018-10-01",
             "name": "[variables('DevOpsDeployerNWInterfaceName')]",
             "location": "[parameters('location')]",
-            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [],
             "properties": {
                 "ipConfigurations": [
@@ -86,7 +86,7 @@
             "apiVersion": "2018-10-01",
             "name": "[parameters('DevOpsDeployerVMName')]",
             "location": "[parameters('location')]",
-            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('DevOpsDeployerNWInterfaceName'))]"
             ],
