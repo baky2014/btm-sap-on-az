@@ -8,7 +8,7 @@
         },
         "subnetId": {
             "type": "String",
-            "defaultValue": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/VNETRG/providers/Microsoft.Network/virtualNetworks/VNETNAME/subnets/SUBNETNAME"
+            "defaultValue": "/subscriptions/5fd3d14e-3648-4720-99ee-f9e14261f9d7/resourceGroups/brice-sap-basic/providers/Microsoft.Network/virtualNetworks/vnet-sap-prod-westeurope-001/subnets/snet-sap-prod-westeurope-001"
         },
         "DevOpsDeployerVMName": {
             "type": "String",
@@ -142,7 +142,7 @@
             "name": "[concat(parameters('DevOpsDeployerVMName'), '/', variables('DevOpsDeployerCSExtension')[variables('DevOpsDeployerOS')].Name)]",
             "apiVersion": "2018-10-01",
             "location": "[parameters('location')]",
-            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('DevOpsDeployerVMName'))]"
             ],
