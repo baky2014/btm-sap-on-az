@@ -61,7 +61,7 @@ steps:
         resourceGroupName: ${{ parameters.rg }}
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(git_user)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/devops-deployment-agent.json'
+        csmFileLink: 'https://raw.githubusercontent.com/$(git_user)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/devops-deployment-agent.bicep'
         overrideParameters: '-adminUsername "$(adminuser)" -adminPublicKey "$(sshkey)" -virtualMachineName "${{ parameters.vmname }}" -virtualMachineComputerName "${{ parameters.hostname }}" -subnetId "$(subnetid)" -Script_URL "$(url-agent-cfg)" -diagnosticsStorageAccountName "$(diagnosticsStorageAccountName)" '
         deploymentMode: 'Complete'
         deploymentName: 'devops-deployment-agent-$(Build.BuildId)'

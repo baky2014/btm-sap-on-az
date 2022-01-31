@@ -6,20 +6,23 @@ parameters:
   type: string
   default: M32ts_192_GB
   values:
-  - E16ds_v4_128_GB-Non-PRD
-  - E20ds_v4_160_GB-Non-PRD
+  - E16ds_v4_128_GB
+  - E20ds_v4_160_GB
+  - E32ds_v4_256_GB
+  - E48ds_v4_384_GB
+  - E64s_v3_432_GB
+  - E64ds_v4_504_GB
   - M32ts_192_GB
   - M32ls_256_GB
-  - E48ds_v4_384_GB-Non-PRD
   - M64ls_512_GB
   - M32dms_v2_875_GB
-  - M64ds_v2_1.000_GB
-  - M64dms_v2_1.792_GB
-  - M128ds_v2_2.000_GB
-  - M208s_v2_2.850_GB
-  - M128dms_v2_3.892_GB
-  - M208ms_v2_5.700_GB
-  - M416ms_v2_11.400_GB
+  - M64ds_v2_1000_GB
+  - M64dms_v2_1792_GB
+  - M128ds_v2_2000_GB
+  - M208s_v2_2850_GB
+  - M128dms_v2_3892_GB
+  - M208ms_v2_5700_GB
+  - M416ms_v2_11400_GB
 
 - name: os
   displayName: Operating System
@@ -27,10 +30,17 @@ parameters:
   default: "SLES 12 SP4"
   values:
   - "RHEL 7.7"
+  - "RHEL 7_9"
   - "RHEL 8.1"
+  - "RHEL 8.2"
+  - "RHEL 8_4"
+  - "SLES 12 SP3"
   - "SLES 12 SP4"
   - "SLES 12 SP5"
+  - "SLES 15"
+  - "SLES 15 SP1"
   - "SLES 15 SP2"
+  - "SLES 15 SP3"
 
 - name: sid
   displayName: HANA System ID
@@ -40,7 +50,7 @@ parameters:
 - name: nr
   displayName: HANA Instance Number (00-99)
   type: string
-  default: "20"
+  default: "00"
 
 - name: vmname
   displayName: HANA VM Name in Azure
@@ -186,7 +196,7 @@ stages:
         resourceGroupName: '$(hanavmrg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/hana-vm.json'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/hana-vm.bicep'
         overrideParameters: '-adminUsername "$(adminuser)" -vmNameInput "${{ parameters.vmname }}" -HostNameInput "${{ parameters.hostname }}" -hanaSystemId "${{ parameters.sid }}" -hanaSystemSize "${{ parameters.size }}" -osType "${{ parameters.os }}" -adminPasswordOrKey "$(pubsshkey)" -subnetId "$(subnetid)" -availabilityZone "${{ parameters.availzone }}" -BackupTag "${{ parameters.hanabackupsetup }}" -Script_URL "$(url-disk-cfg)" -diagnosticsStorageAccountName "$(diagnosticsstorageaccountname)" '
         deploymentMode: 'Complete'
         deploymentName: 'hana-vm-${{ parameters.sid }}-$(Build.BuildId)'
@@ -364,7 +374,7 @@ stages:
         resourceGroupName: '$(rsv-rg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/backup-container.json'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/backup-container.bicep'
         overrideParameters: '-vaultName "$(rsv)" -vaultRG "$(rsv-rg)" -vaultSubID "$(subscription)" -protectionContainers ["$(hanabackupcontainer)"] -sourceResourceIds ["$(hanavmid)"]'
         deploymentMode: 'Incremental'
         deploymentName: 'hana-backup-container-${{ parameters.sid }}-$(Build.BuildId)'

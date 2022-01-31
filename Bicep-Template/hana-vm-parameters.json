@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "value": "azureuser"
+    },
+    "vmNameInput": {
+      "value": "hanatest"
+    },
+    "adminPasswordOrKey": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCDsgHsT/ctkjZabumPFJmqLEQsvzQWf4mU2dOgvtqNnDrYKszzR7uA4itxDVb4ch9lbODbTZqlO7jFyTWlLeGYUeok/HcWUM8iulyBn6QYRfdlKFv91K1W1vhbGSTjD7FFwFH98sZlTnOStlgpqERF9k9vn/J9+AaOB/ND7d1YgPYJb6fQeI7SfpecQPZPyjBdknoLE2LYdY5mWFWX8m+6ubcLawkdXrxoQtodjgITBOaZnSCmcdU+1bVyqRWDOMN/wtpewZpWXjXo368GLvFEFFX/h4Kddtq3CCCqeSEkc6fq2kXNnT72cSECvaPsTGEBCMet1uqJsnsqdu2viOz7 rsa-key-20220120"
+    }
+  }
+}

@@ -6,15 +6,17 @@ parameters:
   type: string
   default: E2ds_v4_(16GB)
   values:
-  - E2ds_v4_(16GB)
-  - E4ds_v4_(32GB)
-  - E8ds_v4_(64GB)
-  - E16ds_v4_(128GB)
-  - E20ds_v4_(160GB)
-  - E32ds_v4_(256GB)
-  - E48ds_v4_(384GB)
-  - E64ds_v4_(504GB)
-  - E80ids_v4_(504GB)
+  - E2ds_v4_16GB
+  - E4ds_v4_32GB
+  - E8ds_v4_64GB
+  - E16ds_v4_128GB
+  - E20ds_v4_160GB
+  - E32ds_v4_256GB
+  - E48ds_v4_384GB
+  - E64ds_v4_504GB
+  - E80ids_v4_504GB
+  - M32ts_192_GB
+  - M32ls_256_GB
 
 - name: os
   displayName: Operating System
@@ -22,11 +24,20 @@ parameters:
   default: "SLES 12 SP4"
   values:
   - "RHEL 7.7"
+  - "RHEL 7_9"
   - "RHEL 8.1"
+  - "RHEL 8.2"
+  - "RHEL 8_4"
+  - "SLES 12 SP3"
   - "SLES 12 SP4"
   - "SLES 12 SP5"
+  - "SLES 15"
+  - "SLES 15 SP1"
   - "SLES 15 SP2"
-  - "Custom RHEL 8.1"
+  - "SLES 15 SP3"
+  - "Windows Server 2012 R2 Datacenter"
+  - "Windows Server 2016 Datacenter"
+  - "Windows Server 2019 Datacenter"
 
 - name: sid
   displayName: SAP System ID
@@ -164,7 +175,7 @@ stages:
         resourceGroupName: '$(sapvmrg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/sap-vm.json'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/sap-vm.bicep'
         overrideParameters: '-adminUsername "$(adminuser)" -vmNameInput "${{ parameters.vmname }}" -HostNameInput "${{ parameters.hostname }}" -sapSystemId "${{ parameters.sid }}" -sapSystemSize "${{ parameters.size }}" -osType "${{ parameters.os }}" -adminPasswordOrKey "$(pubsshkey)" -subnetId "$(subnetid)" -availabilityZone "${{ parameters.availzone }}" -Script_URL "$(url-disk-cfg)" -diagnosticsStorageAccountName "$(diagnosticsstorageaccountname)" '
         deploymentMode: 'Complete'
         deploymentName: 'sap-vm-${{ parameters.sid }}-$(Build.BuildId)'
