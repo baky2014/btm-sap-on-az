@@ -41,17 +41,19 @@
       "sapSystemSize": {
         "type": "string",
         "allowedValues": [
-          "E2ds_v4_(16GB)",
-          "E4ds_v4_(32GB)",
-          "E8ds_v4_(64GB)",
-          "E16ds_v4_(128GB)",
-          "E20ds_v4_(160GB)",
-          "E32ds_v4_(256GB)",
-          "E48ds_v4_(384GB)",
-          "E64ds_v4_(504GB)",
-          "E80ids_v4_(504GB)"
+          "E2ds_v4_16GB",
+          "E4ds_v4_32GB",
+          "E8ds_v4_64GB",
+          "E16ds_v4_128GB",
+          "E20ds_v4_160GB",
+          "E32ds_v4_256GB",
+          "E48ds_v4_384GB",
+          "E64ds_v4_504GB",
+          "E80ids_v4_504GB",
+          "M32ts_192_GB",
+          "M32ls_256_GB"
         ],
-        "defaultValue": "E8ds_v4_(64GB)",
+        "defaultValue": "E8ds_v4_64GB",
         "metadata": {
           "description": "The size of the SAP System you want to deploy."
         }
@@ -173,7 +175,7 @@
         }
       },
       "sizes": {
-        "E2ds_v4_(16GB)": {
+        "E2ds_v4_16GB": {
             "vmSize": "Standard_E2ds_v4",
             "disks": [
               {
@@ -189,7 +191,7 @@
             },
             "useFastNetwork": true
         },
-        "E4ds_v4_(32GB)": {
+        "E4ds_v4_32GB": {
             "vmSize": "Standard_E4ds_v4",
             "disks": [
               {
@@ -205,7 +207,7 @@
             },
             "useFastNetwork": true
         },
-        "E8ds_v4_(64GB)": {
+        "E8ds_v4_64GB": {
             "vmSize": "Standard_E8ds_v4",
             "disks": [
               {
