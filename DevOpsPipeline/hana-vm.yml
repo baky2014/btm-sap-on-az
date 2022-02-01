@@ -119,7 +119,7 @@ parameters:
 - name: monitoringextsap
   displayName: Azure Monitoring Extension for SAP
   type: boolean
-  default: True
+  default: false
 
 #will be added soon
 #- name: qualitychecks
@@ -135,7 +135,7 @@ parameters:
 - name: hcmt
   displayName: HANA performance checks
   type: boolean
-  default: False
+  default: true
 
 - name: cleanup
   displayName: Remove everything at the end
