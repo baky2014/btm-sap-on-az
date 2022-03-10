@@ -8,26 +8,8 @@
     "vmNameInput": {
       "value": "hanatest"
     },
-    "hanaSystemSize": {
-      "value": "M32ls_256_GB"
-    },
-    "osType": {
-      "value": "SLES 15 SP2"
-    },
     "adminPasswordOrKey": {
-      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKQ7AvGHIPbNAZxKE3ri3sjPahS/zd7XOvrJ9vBmb04Ib5cAkqFFzPPMQzmQH9ci911wfseDeT8SXFymtE0GNycSOL35hKsUUnJuWkZoVQFYK0yE/IXAQnhpTKo6VHfD6bAWklG5j+7l1Lu7wjTGi9aM3bnKLTkzTZxx/plt08rEJp1L56LJkTYseYEgMyz4EBc+ikVOtaQ3w9eaTJEUJsDxALr9Pm6DyIK3VPS7Lfl44BzcbfeGX4xJ9qhyXp6wCwqwqapOETXf/saZ8n3s+0Gc/xlry2wYwpxkT7vIOXLFX4+wQcpWExEn+elWPTmQkc+EJzO2IG/HxiZBoOnkNt banfack@cc-b6e20148-58b46666bf-jlbbj"
-    },
-    "Owner": {
-      "value": "SAP Team Contact"
-    },
-    "CostCenter": {
-      "value": "28007510"
-    },
-    "subnetId": {
-      "value": "/subscriptions/5fd3d14e-3648-4720-99ee-f9e14261f9d7/resourceGroups/brice-sap-basic/providers/Microsoft.Network/virtualNetworks/vnet-sap-prod-westeurope-001/subnets/snet-sap-prod-westeurope-001"
-    },
-    "HostNameInput": {
-        "value": "hostname" 
+      "value": "ssh-rsa AAAABxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
     }
   }
 }

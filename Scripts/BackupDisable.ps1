@@ -31,7 +31,11 @@ param(
     [Parameter(Mandatory = $true)][string]$RSV,
     [Parameter(Mandatory = $true)][string]$VM,
     [Parameter(Mandatory = $true)][string]$VMRG,
-    [Parameter(Mandatory = $true)][string]$POL
+    [Parameter(Mandatory = $true)][string]$POL,
+    [Parameter(Mandatory = $true)][string]$ARM_CLIENT_ID,
+    [Parameter(Mandatory = $true)][string]$ARM_CLIENT_SECRET,
+    [Parameter(Mandatory = $true)][string]$ARM_TENANT_ID,
+    [Parameter(Mandatory = $true)][string]$ARM_SUBSCRIPTION_ID
 )
 
 $vmrg=$VMRG.ToLower()
@@ -41,6 +45,12 @@ $CONTAINER2="VMAppContainer;Compute;$vmrg;$vm"
 $ITEMSYS="saphanadatabase;$SID;systemdb"
 $ITEMTEN="saphanadatabase;$SID;$SID"
 
+
+Write-Host "-----------------------------------------------------"
+Write-Host "----Login to Azure ----------------------------------"
+
+az login --service-principal --username $ARM_CLIENT_ID --password $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+az account set --subscription $ARM_SUBSCRIPTION_ID
 
 Write-Host "-----------------------------------------------------"
 Write-Host "----------Disable existing HANA backup items---------"
@@ -98,10 +108,8 @@ Write-Host $CONTDIS1
     }
     else {
         Write-Host "-------Container found, backup will be removed-------"
-        Write-Host "az backup protection disable -c '$CONTAINER1' -g $RGV -v $RSV --item-name $VM"
-        az backup protection disable -c "$CONTAINER1" -g $RGV -v $RSV --item-name $VM --yes
-        Write-Host "az backup container unregister -c '$CONTAINER1' -g $RGV -v $RSV --backup-management-type AzureIaasVM --yes"
-        az backup container unregister -c "$CONTAINER1" -g $RGV -v $RSV --backup-management-type AzureIaasVM --yes
+        Write-Host "az backup protection disable -c '$CONTAINER1' -g $RGV -v $RSV --item-name $VM --delete-backup-data true --yes"
+        az backup protection disable -c "$CONTAINER1" -g $RGV -v $RSV --item-name $VM --delete-backup-data true --yes
     }   
 
 Write-Host "-----------------------------------------------------"
