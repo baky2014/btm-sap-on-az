@@ -175,7 +175,7 @@ stages:
         resourceGroupName: '$(sapvmrg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/sap-vm.bicep'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/sap-vm.json'
         overrideParameters: '-adminUsername "$(adminuser)" -vmNameInput "${{ parameters.vmname }}" -HostNameInput "${{ parameters.hostname }}" -sapSystemId "${{ parameters.sid }}" -sapSystemSize "${{ parameters.size }}" -osType "${{ parameters.os }}" -adminPasswordOrKey "$(pubsshkey)" -subnetId "$(subnetid)" -availabilityZone "${{ parameters.availzone }}" -Script_URL "$(url-disk-cfg)" -diagnosticsStorageAccountName "$(diagnosticsstorageaccountname)" '
         deploymentMode: 'Complete'
         deploymentName: 'sap-vm-${{ parameters.sid }}-$(Build.BuildId)'

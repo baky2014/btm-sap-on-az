@@ -119,7 +119,7 @@ parameters:
 - name: monitoringextsap
   displayName: Azure Monitoring Extension for SAP
   type: boolean
-  default: True
+  default: false
 
 #will be added soon
 #- name: qualitychecks
@@ -135,7 +135,7 @@ parameters:
 - name: hcmt
   displayName: HANA performance checks
   type: boolean
-  default: False
+  default: true
 
 - name: cleanup
   displayName: Remove everything at the end
@@ -196,7 +196,7 @@ stages:
         resourceGroupName: '$(hanavmrg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/hana-vm.bicep'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/hana-vm.json'
         overrideParameters: '-adminUsername "$(adminuser)" -vmNameInput "${{ parameters.vmname }}" -HostNameInput "${{ parameters.hostname }}" -hanaSystemId "${{ parameters.sid }}" -hanaSystemSize "${{ parameters.size }}" -osType "${{ parameters.os }}" -adminPasswordOrKey "$(pubsshkey)" -subnetId "$(subnetid)" -availabilityZone "${{ parameters.availzone }}" -BackupTag "${{ parameters.hanabackupsetup }}" -Script_URL "$(url-disk-cfg)" -diagnosticsStorageAccountName "$(diagnosticsstorageaccountname)" '
         deploymentMode: 'Complete'
         deploymentName: 'hana-vm-${{ parameters.sid }}-$(Build.BuildId)'
@@ -215,8 +215,8 @@ stages:
     - script: |
         #!/bin/bash
         mkdir -p ~/Inventory
-        echo $(arm_output) > ~/Inventory/${{ parameters.vmname }}.bicep
-      displayName: Write Inventory BICEP
+        echo $(arm_output) > ~/Inventory/${{ parameters.vmname }}.json
+      displayName: Write Inventory JSON
       failOnStderr: false
 
     - script: |
@@ -374,7 +374,7 @@ stages:
         resourceGroupName: '$(rsv-rg)'
         location: ${{ parameters.location }}
         templateLocation: 'URL of the file'
-        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/Bicep-Template/backup-container.bicep'
+        csmFileLink: 'https://raw.githubusercontent.com/$(gituser)/btm-sap-on-az/$(Build.SourceBranchName)/ARM-Template/backup-container.json'
         overrideParameters: '-vaultName "$(rsv)" -vaultRG "$(rsv-rg)" -vaultSubID "$(subscription)" -protectionContainers ["$(hanabackupcontainer)"] -sourceResourceIds ["$(hanavmid)"]'
         deploymentMode: 'Incremental'
         deploymentName: 'hana-backup-container-${{ parameters.sid }}-$(Build.BuildId)'

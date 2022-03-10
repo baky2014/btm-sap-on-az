@@ -129,6 +129,7 @@ For the full capabitilities of this repository continue below path for the DevOp
 
 [![Deploy HANA VM to Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmimergel%2Fsap-hana-vm%2Fmain%2FARM-Template%2Fsap-hana-vm.json) 
 
+
 Note: Required target Subnet ID can be retrieved in cloud shell via: <br />
 `az network vnet subnet list -g [ResourceGroup] --vnet-name [Name] --query [].id`
 
@@ -149,7 +150,6 @@ Note: Required target Subnet ID can be retrieved in cloud shell via: <br />
 	![Create a repository](./Documentation/Images/import-repo-1.jpg)
 
 	![Import from GitHub](./Documentation/Images/import-repo-2.jpg)
-
 
 3. Add following extensions to your DevOps Project
 	* [Ansible Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.vss-services-ansible) 
