@@ -8,7 +8,7 @@
         },
         "subnetId": {
             "type": "String",
-            "defaultValue": "/subscriptions/5fd3d14e-3648-4720-99ee-f9e14261f9d7/resourceGroups/brice-sap-basic/providers/Microsoft.Network/virtualNetworks/vnet-sap-prod-westeurope-001/subnets/snet-sap-prod-westeurope-001"
+            "defaultValue": "/subscriptions/281fdc25-3587-4790-8926-f293a3f9df30/resourceGroups/system-vnet-rg/providers/Microsoft.Network/virtualNetworks/0-vnet/subnets/0subnet"
         },
         "DevOpsDeployerVMName": {
             "type": "String",
@@ -39,11 +39,11 @@
         },
         "Owner": {
             "type": "string",
-            "defaultValue": "Contact"
+            "defaultValue": "BTC-AG"
         },
         "CostCenter": {
             "type": "string",
-            "defaultValue": "123456"
+            "defaultValue": "BUASM"
         }
     },
     "variables": {
@@ -65,7 +65,7 @@
             "apiVersion": "2018-10-01",
             "name": "[variables('DevOpsDeployerNWInterfaceName')]",
             "location": "[parameters('location')]",
-            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [],
             "properties": {
                 "ipConfigurations": [
@@ -86,7 +86,7 @@
             "apiVersion": "2018-10-01",
             "name": "[parameters('DevOpsDeployerVMName')]",
             "location": "[parameters('location')]",
-            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('DevOpsDeployerNWInterfaceName'))]"
             ],
@@ -142,7 +142,7 @@
             "name": "[concat(parameters('DevOpsDeployerVMName'), '/', variables('DevOpsDeployerCSExtension')[variables('DevOpsDeployerOS')].Name)]",
             "apiVersion": "2018-10-01",
             "location": "[parameters('location')]",
-            // "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
+            "tags": {"cost-center": "[parameters('CostCenter')]","application": "SAP","owner": "[parameters('Owner')]", "cmdb-link": "https://tbd."},
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('DevOpsDeployerVMName'))]"
             ],

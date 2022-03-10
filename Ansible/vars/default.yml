@@ -4,31 +4,39 @@ sap_sid:
 sap_instancenum: 
 sap_hostname: 
 
+target_media_location:        "/usr/sap/install"
+download_directory:           "/mnt/downloads"
+
 # ------------------------------------------------------------------------------------------------------------------------
 # -----------------------------URLs for HANA DB Installation--------------------------------------------------------------
 # Default URLs
-# SAPCAR_1010-70006178.EXE
-# url_sapcar: https://softwaredownloads.sap.com/file/0020000002208852020
-# IMDB_SERVER20_055_0-80002031.SAR
-# url_hdbserver: https://softwaredownloads.sap.com/file/0020000000392162021
-# HCMT_055_0-80003261.SAR
-# url_hcmt: https://softwaredownloads.sap.com/file/0020000000392012021
-#
+
+sapcar: SAPCAR_1115-70006178.EXE
+url_sapcar: https://softwaredownloads.sap.com/file/0020000000098642022
+
+hdbserver: IMDB_SERVER20_059_1-80002031.SAR
+url_hdbserver: https://softwaredownloads.sap.com/file/0020000000064362022
+
+hcmt: HCMT_060_0-80003261.SAR
+url_hcmt: https://softwaredownloads.sap.com/file/0020000001739812021
+
+
 # using own accessible storage account:
-url_sapcar: https://sapfilesstorageacc.blob.core.windows.net/sapbits/SAPCAR_1010-70006178.EXE?sp=racwdyti&st=2022-01-20T10:18:18Z&se=2023-01-20T18:18:18Z&sv=2020-08-04&sr=b&sig=ARx66QHeVhoPRL%2BVtP9JLXfJtUyLYhI9jsy6WL3uh4M%3D
-url_hdbserver: https://sapfilesstorageacc.blob.core.windows.net/sapbits/IMDB_SERVER20_059_0-80002031.SAR?sp=racwdyti&st=2022-01-20T10:17:27Z&se=2023-01-20T18:17:27Z&sv=2020-08-04&sr=b&sig=06As6VmSdjFgD0MvBb7HIfPiRrj4MDbBEEJzVt5opNY%3D
-url_hcmt: https://sapfilesstorageacc.blob.core.windows.net/sapbits/HCMT_059_0-80003261.SAR?sp=racwdyti&st=2022-01-20T10:16:25Z&se=2023-01-20T18:16:25Z&sv=2020-08-04&sr=b&sig=XdSlLvFeA8BMGiBcmHuF2oA8ni9um9e94sel4RB8lNA%3D
+# url_sapcar: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/SAPCAR_1010-70006178.EXE
+# url_hdbserver: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/IMDB_SERVER20_060_0-80002031.SAR
+# url_hcmt: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/HCMT_060_0-80003261.SAR
+
 
 url_xsa_media: https://stsapbitsgermanywes.blob.core.windows.net/sapbits/51054859.ZIP
 
 url_cockpit: 
 url_di_core: 
-url_portal_services: https://sapfilesstorageacc.blob.core.windows.net/files/XSACPORTALSERV05_7-80002098.ZIP?sp=racwdyti&st=2022-01-20T10:10:29Z&se=2023-01-20T18:10:29Z&sv=2020-08-04&sr=b&sig=DiL%2FH0FKQY8zk%2B%2Fk7gVDtWzowIenFKgwAOnmEDWcae4%3D
-url_shine_xsa: https://sapfilesstorageacc.blob.core.windows.net/files/XSACSHINE08_9-70002323.ZIP?sp=racwdyti&st=2022-01-20T10:13:40Z&se=2023-01-20T18:13:40Z&sv=2020-08-04&sr=b&sig=C3jlL3rFOZTOxeUftQaS6yqKQGmlJex%2BO0tS6sOTQDk%3D
-url_xs_services: https://sapfilesstorageacc.blob.core.windows.net/files/XSACSERVICES07_15-70002361.ZIP?sp=racwdyti&st=2022-01-20T10:12:36Z&se=2023-01-20T18:12:36Z&sv=2020-08-04&sr=b&sig=XJK0nrDrc9Y4V3bZu4NlHR4DjpXC12Vcu3pd9G4obqA%3D
-url_xsa_runtime: https://sapfilesstorageacc.blob.core.windows.net/files/XSACXSACOCKPIT01_25-80002644.ZIP?sp=racwdyti&st=2022-01-20T10:14:40Z&se=2023-01-20T18:14:40Z&sv=2020-08-04&sr=b&sig=3h7ksJTa%2F12JUDrRZYtnVFs2XzN%2FTlW2dEc%2BnaMMuaI%3D
-url_xsa_hrtt: https://sapfilesstorageacc.blob.core.windows.net/files/XSACHRTT12_21051-70002322.ZIP?sp=racwdyti&st=2022-01-20T10:08:45Z&se=2023-01-20T18:08:45Z&sv=2020-08-04&sr=b&sig=sbGHYcw%2Fpo%2BMShzrHdE5XK473pmO8ow8rC%2BznkOiK4U%3D
-url_xsa_webide: https://sapfilesstorageacc.blob.core.windows.net/files/XSACSAPWEBIDE05_9-80002257.ZIP?sp=racwdyti&st=2022-01-20T10:11:32Z&se=2023-01-20T18:11:32Z&sv=2020-08-04&sr=b&sig=Y5UWWIrmFaUwzU8rgDxRpW5Qjqb0WHQYPlI8lDZhMmc%3D
+url_portal_services: https://sapbitsweu.blob.core.windows.net/files/XSACPORTALSERV05_4-80002098.ZIP
+url_shine_xsa: https://sapbitsweu.blob.core.windows.net/files/XSACSHINE08_8-70002323.ZIP
+url_xs_services: https://sapbitsweu.blob.core.windows.net/files/XSACSERVICES07_12-70002361.ZIP
+url_xsa_runtime: https://sapbitsweu.blob.core.windows.net/files/XSACXSACOCKPIT01_18-80002644.ZIP
+url_xsa_hrtt: https://sapbitsweu.blob.core.windows.net/files/XSACHRTT12_21051-70002322.ZIP
+url_xsa_webide: https://sapbitsweu.blob.core.windows.net/files/XSACSAPWEBIDE05_6-80002257.ZIP
 url_xsa_mta:
 
 url_retries_delay: 10
@@ -39,7 +47,9 @@ install_cockpit: false
 install_shine: false
 install_xsa: false
 
-email_shine: "brice.temena@gmail.com"
+reinstall: false
+
+email_shine: "bricekisito.banfacktemena@btc-ag.com"
 
 # ------------------------------------------------------------------------------------------------------------------------
 # -----------------------------URL for the Azure HANA Backint Integration Script------------------------------------------
