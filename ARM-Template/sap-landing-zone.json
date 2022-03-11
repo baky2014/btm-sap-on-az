@@ -44,13 +44,13 @@
                 "description": "Enter SSH key for the Linux VM"
             }
         },
-        "WindowsPassword": {
-            "defaultValue": "password123!!",
-            "type": "SecureString",
-            "metadata": {
-                "description": "Enter password for the Windows SAP Admin VM"
-            }
-        },
+        // "WindowsPassword": {
+        //     "defaultValue": "password123!!",
+        //     "type": "SecureString",
+        //     "metadata": {
+        //         "description": "Enter password for the Windows SAP Admin VM"
+        //     }
+        // },
         // "PrivateDNSZoneName": {
         //     "type": "string",
         //     "defaultValue": "sap.contoso.net",
@@ -60,7 +60,7 @@
         // },
         "SetupDeploymentAgentScriptURL": {
             "type": "string",
-            "defaultValue": "https://raw.githubusercontent.com/mimergel/sap-hana-vm/beta/Scripts/configure_deployer.sh",
+            "defaultValue": "https://raw.githubusercontent.com/baky2014/btm-sap-on-az/main/Scripts/configure_deployer.sh",
             "metadata": {
                 "description": "Enter your own script location if required"
             }
@@ -71,7 +71,7 @@
         },
         "SAPVNETNameAddressSpace": {
             "defaultValue": [
-                "10.10.0.0/25"
+                "10.10.0.0/24"
             ],
             "type": "Array"
         },
@@ -80,7 +80,7 @@
             "type": "String"
         },
         "SAPSubnetAddressRange": {
-            "defaultValue": "10.10.10.0/26",
+            "defaultValue": "10.10.0.0/26",
             "type": "String"
         },
         "SAPAdminSubnetName": {
@@ -88,7 +88,7 @@
             "type": "String"
         },
         "SAPAdminSubnetAddressRange": {
-            "defaultValue": "10.10.3.0/26",
+            "defaultValue": "10.10.0.64/26",
             "type": "String"
         },
         // "BastionSubnetName": {
@@ -111,10 +111,11 @@
             "defaultValue": "[concat('nsg-admin-',resourceGroup().location, '-', parameters('uid'))]",
             "type": "String"
         },
-        "BastionNSGName": {
-            "defaultValue": "[concat('nsg-bastion-',resourceGroup().location, '-', parameters('uid'))]",
-            "type": "String"
-        },        "AllowedIP": {
+        // "BastionNSGName": {
+        //     "defaultValue": "[concat('nsg-bastion-',resourceGroup().location, '-', parameters('uid'))]",
+        //     "type": "String"
+        // },        
+        "AllowedIP": {
             "defaultValue": "*",
             "type": "String",
             "metadata": {
@@ -125,13 +126,13 @@
             "defaultValue": "[concat('rsv-sap-',resourceGroup().location, '-', parameters('uid'))]",
             "type": "string"
         },
-        "KeyVaultName": {
-            "defaultValue": "kv-(location)-uid",
-            "type": "string",
-            "metadata": {
-                "description": "Keyvault name will be generated as shown in default value"
-            }
-        },
+        // "KeyVaultName": {
+        //     "defaultValue": "btkv-(location)-uid",
+        //     "type": "string",
+        //     "metadata": {
+        //         "description": "Keyvault name will be generated as shown in default value"
+        //     }
+        // },
         "deploykeyvault": {
             "defaultValue": "False",
             "type": "string",
@@ -195,12 +196,12 @@
             "type": "String",
             "defaultValue": "Standard_B2s"
         },
-        "SAPWinAdminVirtualMachineSize": {
-            "type": "String",
-            "defaultValue": "Standard_B2s"
-        },
+        // "SAPWinAdminVirtualMachineSize": {
+        //     "type": "String",
+        //     "defaultValue": "Standard_B2s"
+        // },
         "storageAccountNameSAPBits": {
-            "defaultValue": "stsapbits",
+            "defaultValue": "btmstsapbits",
             "type": "String"
         },
         "storageContainerNameSAPBits": {
@@ -211,7 +212,7 @@
             }
         },
         "storageAccountNameDiagnostics": {
-            "defaultValue": "stdiagnostics",
+            "defaultValue": "btmstdiagcs",
             "type": "String"
         },
         "accountType": {
@@ -575,14 +576,14 @@
         "resourcegroupId": "[resourceGroup().id]",
         // "bastionPublicIPName": "[concat(parameters('bastionHostName'), '-pip')]",
         "deployerpublicIPName": "[concat(parameters('DevOpsDeployerVMName'), '-pip')]",
-        "shortlocation9": "[take(resourceGroup().location,9)]",
+        // "shortlocation9": "[take(resourceGroup().location,9)]",
         "shortlocation10": "[take(resourceGroup().location,10)]",
-        "SAPWinAdminVMName15": "[concat('winadm',variables('shortlocation9'))]",
-        "SAPWinAdminComputerName15": "[concat('winadm',variables('shortlocation9'))]",
+        // "SAPWinAdminVMName15": "[concat('winadm',variables('shortlocation9'))]",
+        // "SAPWinAdminComputerName15": "[concat('winadm',variables('shortlocation9'))]",
         "storageAccountNameSAPBits": "[concat(parameters('storageAccountNameSAPBits'),variables('shortlocation10'))]",
         "storageAccountNameDiagnostics": "[concat(parameters('storageAccountNameDiagnostics'),variables('shortlocation10'))]",
-        "KeyVaultName": "[concat('kv-', variables('shortlocation10'), '-', parameters('uid'))]",
-        "vmRegistration": true,
+        "KeyVaultName": "[concat('btkv-', variables('shortlocation10'), '-', parameters('uid'))]",
+        // "vmRegistration": true,
         "VARnetworkAclsVirtualNetworkRules": [
             {
                 "id": "[concat(variables('resourcegroupId'), '/providers/Microsoft.Network/virtualNetworks/', parameters('SAPVNETName'), '/subnets/', parameters('SAPSubnetName'))]"
@@ -593,7 +594,7 @@
 
         ],
         "DevOpsDeployerNWInterfaceName": "[concat(parameters('DevOpsDeployerVMName'), '-nic')]",
-        "SAPWinAdminNWInterfaceName": "[concat(variables('SAPWinAdminVMName15'), '-nic')]",
+        // "SAPWinAdminNWInterfaceName": "[concat(variables('SAPWinAdminVMName15'), '-nic')]",
         "DevOpsDeployerOS": "Linux",
         "DevOpsDeployerCSExtension": {
             "Linux": {
@@ -699,89 +700,89 @@
                 ]
             }
         },
-        {
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "name": "[parameters('BastionNSGName')]",
-            "location": "[parameters('location')]",
-            "tags": {},
-            "properties": {
-                "securityRules": [
-                    {
-                        "name": "AllowGatewayManager",
-                        "properties": {
-                            "description": "Allow GatewayManager",
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "443",
-                            "sourceAddressPrefix": "GatewayManager",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 2702,
-                            "direction": "Inbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    },
-                    {
-                        "name": "AllowHttpsInBound",
-                        "properties": {
-                            "description": "Allow HTTPs",
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "443",
-                            "sourceAddressPrefix": "Internet",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 2703,
-                            "direction": "Inbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    },
-                    {
-                        "name": "AllowSshRdpOutbound",
-                        "properties": {
-                            "protocol": "*",
-                            "sourcePortRange": "*",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "VirtualNetwork",
-                            "access": "Allow",
-                            "priority": 100,
-                            "direction": "Outbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [
-                                "22",
-                                "3389"
-                            ],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    },
-                    {
-                        "name": "AllowAzureCloudOutbound",
-                        "properties": {
-                            "protocol": "TCP",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "443",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "AzureCloud",
-                            "access": "Allow",
-                            "priority": 110,
-                            "direction": "Outbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    }
-                ]
-            }
-        },
+        // {
+        //     "type": "Microsoft.Network/networkSecurityGroups",
+        //     "apiVersion": "2019-02-01",
+        //     "name": "[parameters('BastionNSGName')]",
+        //     "location": "[parameters('location')]",
+        //     "tags": {},
+        //     "properties": {
+        //         "securityRules": [
+        //             {
+        //                 "name": "AllowGatewayManager",
+        //                 "properties": {
+        //                     "description": "Allow GatewayManager",
+        //                     "protocol": "*",
+        //                     "sourcePortRange": "*",
+        //                     "destinationPortRange": "443",
+        //                     "sourceAddressPrefix": "GatewayManager",
+        //                     "destinationAddressPrefix": "*",
+        //                     "access": "Allow",
+        //                     "priority": 2702,
+        //                     "direction": "Inbound",
+        //                     "sourcePortRanges": [],
+        //                     "destinationPortRanges": [],
+        //                     "sourceAddressPrefixes": [],
+        //                     "destinationAddressPrefixes": []
+        //                 }
+        //             },
+        //             {
+        //                 "name": "AllowHttpsInBound",
+        //                 "properties": {
+        //                     "description": "Allow HTTPs",
+        //                     "protocol": "*",
+        //                     "sourcePortRange": "*",
+        //                     "destinationPortRange": "443",
+        //                     "sourceAddressPrefix": "Internet",
+        //                     "destinationAddressPrefix": "*",
+        //                     "access": "Allow",
+        //                     "priority": 2703,
+        //                     "direction": "Inbound",
+        //                     "sourcePortRanges": [],
+        //                     "destinationPortRanges": [],
+        //                     "sourceAddressPrefixes": [],
+        //                     "destinationAddressPrefixes": []
+        //                 }
+        //             },
+        //             {
+        //                 "name": "AllowSshRdpOutbound",
+        //                 "properties": {
+        //                     "protocol": "*",
+        //                     "sourcePortRange": "*",
+        //                     "sourceAddressPrefix": "*",
+        //                     "destinationAddressPrefix": "VirtualNetwork",
+        //                     "access": "Allow",
+        //                     "priority": 100,
+        //                     "direction": "Outbound",
+        //                     "sourcePortRanges": [],
+        //                     "destinationPortRanges": [
+        //                         "22",
+        //                         "3389"
+        //                     ],
+        //                     "sourceAddressPrefixes": [],
+        //                     "destinationAddressPrefixes": []
+        //                 }
+        //             },
+        //             {
+        //                 "name": "AllowAzureCloudOutbound",
+        //                 "properties": {
+        //                     "protocol": "TCP",
+        //                     "sourcePortRange": "*",
+        //                     "destinationPortRange": "443",
+        //                     "sourceAddressPrefix": "*",
+        //                     "destinationAddressPrefix": "AzureCloud",
+        //                     "access": "Allow",
+        //                     "priority": 110,
+        //                     "direction": "Outbound",
+        //                     "sourcePortRanges": [],
+        //                     "destinationPortRanges": [],
+        //                     "sourceAddressPrefixes": [],
+        //                     "destinationAddressPrefixes": []
+        //                 }
+        //             }
+        //         ]
+        //     }
+        // },
         // {
         //     "name": "[variables('bastionPublicIPName')]",
         //     "type": "Microsoft.Network/publicIPAddresses",
@@ -795,7 +796,7 @@
         //     }
         // },
         {
-            "condition": "[equals(parameters('deployerpip'),'False')]",
+            "condition": "[equals(parameters('deployerpip'),'True')]",
             "name": "[variables('deployerpublicIPName')]",
             "type": "Microsoft.Network/publicIPAddresses",
             "apiVersion": "2020-05-01",
@@ -1115,9 +1116,6 @@
                         "name": "devopsdeployeripconfig",
                         "properties": {
                             "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[if(equals(parameters('deployerpip'),'True'), resourceId('Microsoft.Network/publicIPAddresses', variables('deployerpublicIPName')), json('null'))]"
-                            },
                             "subnet": {
                                 "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('SAPVNETName'),parameters('SAPAdminSubnetName'))]"
                             }
@@ -1202,77 +1200,77 @@
                 }
             }
         },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('SAPWinAdminNWInterfaceName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks/', parameters('SAPVNETName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "sapwinadminipconfig",
-                        "properties": {
-                            "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('SAPVNETName'),parameters('SAPAdminSubnetName'))]"
-                            },
-                            "privateIPAllocationMethod": "Dynamic"
-                        }
-                    }
-                ]
-            }            
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2021-03-01",
-            "name": "[variables('SAPWinAdminVMName15')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', variables('SAPWinAdminNWInterfaceName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('SAPWinAdminVirtualMachineSize')]"
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "fromImage",
-                        "managedDisk": {
-                            "storageAccountType": "[parameters('DiskType')]"
-                        }
-                    },
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsDesktop",
-                        "offer": "Windows-10",
-                        "sku": "21h1-pro",
-                        "version": "latest"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('SAPWinAdminNWInterfaceName'))]"
-                        }
-                    ]
-                },
-                "osProfile": {
-                    "computerName": "[variables('SAPWinAdminComputerName15')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('WindowsPassword')]",
-                    "windowsConfiguration": {
-                        "enableAutomaticUpdates": true,
-                        "provisionVmAgent": true,
-                        "patchSettings": {
-                            "enableHotpatching": false,
-                            "patchMode": "AutomaticByOS"
-                        }
-                    }
-                },
-                "licenseType": "Windows_Client"
-            }
-        },
+        // {
+        //     "type": "Microsoft.Network/networkInterfaces",
+        //     "apiVersion": "2018-10-01",
+        //     "name": "[variables('SAPWinAdminNWInterfaceName')]",
+        //     "location": "[parameters('location')]",
+        //     "dependsOn": [
+        //         "[resourceId('Microsoft.Network/virtualNetworks/', parameters('SAPVNETName'))]"
+        //     ],
+        //     "properties": {
+        //         "ipConfigurations": [
+        //             {
+        //                 "name": "sapwinadminipconfig",
+        //                 "properties": {
+        //                     "subnet": {
+        //                         "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets',parameters('SAPVNETName'),parameters('SAPAdminSubnetName'))]"
+        //                     },
+        //                     "privateIPAllocationMethod": "Dynamic"
+        //                 }
+        //             }
+        //         ]
+        //     }            
+        // },
+        // {
+        //     "type": "Microsoft.Compute/virtualMachines",
+        //     "apiVersion": "2021-03-01",
+        //     "name": "[variables('SAPWinAdminVMName15')]",
+        //     "location": "[parameters('location')]",
+        //     "dependsOn": [
+        //         "[concat('Microsoft.Network/networkInterfaces/', variables('SAPWinAdminNWInterfaceName'))]"
+        //     ],
+        //     "properties": {
+        //         "hardwareProfile": {
+        //             "vmSize": "[parameters('SAPWinAdminVirtualMachineSize')]"
+        //         },
+        //         "storageProfile": {
+        //             "osDisk": {
+        //                 "createOption": "fromImage",
+        //                 "managedDisk": {
+        //                     "storageAccountType": "[parameters('DiskType')]"
+        //                 }
+        //             },
+        //             "imageReference": {
+        //                 "publisher": "MicrosoftWindowsDesktop",
+        //                 "offer": "Windows-10",
+        //                 "sku": "21h1-pro",
+        //                 "version": "latest"
+        //             }
+        //         },
+        //         "networkProfile": {
+        //             "networkInterfaces": [
+        //                 {
+        //                     "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('SAPWinAdminNWInterfaceName'))]"
+        //                 }
+        //             ]
+        //         },
+        //         "osProfile": {
+        //             "computerName": "[variables('SAPWinAdminComputerName15')]",
+        //             "adminUsername": "[parameters('adminUsername')]",
+        //             "adminPassword": "[parameters('WindowsPassword')]",
+        //             "windowsConfiguration": {
+        //                 "enableAutomaticUpdates": true,
+        //                 "provisionVmAgent": true,
+        //                 "patchSettings": {
+        //                     "enableHotpatching": false,
+        //                     "patchMode": "AutomaticByOS"
+        //                 }
+        //             }
+        //         },
+        //         "licenseType": "Windows_Client"
+        //     }
+        // },
         {
             "type": "Microsoft.Automation/automationAccounts",
             "apiVersion": "2021-06-22",
@@ -1438,10 +1436,10 @@
       "mgmtrg": {
         "value": "[resourceGroup().name]",
         "type": "string"
-      },
-      "deployerpip": {
-        "value": "[if(equals(parameters('deployerpip'),'True'), resourceId('Microsoft.Network/publicIPAddresses', variables('deployerpublicIPName')), json('null'))]",
-        "type": "string"
       }
+    //   "deployerpip": {
+    //     "value": "[if(equals(parameters('deployerpip'),'True'), resourceId('Microsoft.Network/publicIPAddresses', variables('deployerpublicIPName')), json('null'))]",
+    //     "type": "string"
+    //   }
     }
 }
