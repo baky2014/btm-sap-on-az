@@ -3,7 +3,7 @@
 # Install Powershell and other Tools
 
 # Update the list of packages
-sudo apt-get update
+sudo apt-get update -y
 # Install pre-requisite packages.
 sudo apt-get install -y wget apt-transport-https software-properties-common
 # Download the Microsoft repository GPG keys
@@ -11,7 +11,7 @@ wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-pr
 # Register the Microsoft repository GPG keys
 sudo dpkg -i packages-microsoft-prod.deb
 # Update the list of packages after we added packages.microsoft.com
-sudo apt-get update
+sudo apt-get update -y
 # Install PowerShell
 sudo apt-get install -y powershell
 # Start PowerShell
@@ -41,18 +41,22 @@ sudo apt install dos2unix -y
 sudo apt install python3-pip -y 
 sudo apt install expect -y
 
+# Install terraform
+# https://www.terraform.io/cli/install/apt
+# curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+# sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+wget https://releases.hashicorp.com/terraform/1.1.7/terraform_1.1.7_linux_amd64.zip
+unzip terraform_1.1.7_linux_amd64.zip
+sudo mv terraform /usr/local/bin/ 
+# sudo apt install terraform -y
+
 # Install Ansible
 sudo apt update -y
 sudo apt install -y software-properties-common
 sudo apt-add-repository --yes --update ppa:ansible/ansible
 # sudo apt install -y ansible
-sudo pip install ansible==2.9.27
-
-# Install terraform
-# https://www.terraform.io/cli/install/apt
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt install terraform -y
+sudo pip install ansible
 
 # Some Ansible settings
 if [ -e /etc/ansible/ansible.cfg  ]
